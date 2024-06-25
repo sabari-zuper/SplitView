@@ -86,7 +86,7 @@ public struct Split<P: View, D: SplitDivider, S: View>: View {
                 if isDraggable() {
                     splitter
                         .position(dCenter)
-                        .gesture(drag(in: size))
+                        .simultaneousGesture(drag(in: size))
                 }
             }
             // Our size changes when the window size changes or the containing window's size changes.
