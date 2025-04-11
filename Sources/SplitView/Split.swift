@@ -73,15 +73,15 @@ public struct Split<P: View, D: SplitDivider, S: View>: View {
             let sOffset = horizontal ? CGSize(width: pWidth + spacing, height: 0) : CGSize(width: 0, height: pHeight + spacing)
             let dCenter = horizontal ? CGPoint(x: pWidth + spacing / 2, y: height / 2) : CGPoint(x: width / 2, y: pHeight + spacing / 2)
             ZStack(alignment: .topLeading) {
-                if !hidePrimary {
+               // if !hidePrimary {
                     primary
-                        .frame(width: pWidth, height: pHeight)
-                }
-                if !hideSecondary {
+                    .frame(width: hidePrimary ? 0 : pWidth, height: pHeight)
+               // }
+               // if !hideSecondary {
                     secondary
-                        .frame(width: sWidth, height: sHeight)
+                    .frame(width: hideSecondary ? 0 : sWidth, height: sHeight)
                         .offset(sOffset)
-                }
+              //  }
                 // Only show the splitter if it is draggable. See isDraggable comments.
                 if isDraggable() {
                     splitter
